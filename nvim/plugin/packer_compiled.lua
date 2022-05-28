@@ -77,6 +77,17 @@ _G.packer_plugins = {
     path = "/Users/zc-hackintosh/.local/share/nvim/site/pack/packer/opt/alpha-nvim",
     url = "https://github.com/goolord/alpha-nvim"
   },
+  ["flutter-tools.nvim"] = {
+    config = { "require('config.flutter-tools')" },
+    loaded = true,
+    path = "/Users/zc-hackintosh/.local/share/nvim/site/pack/packer/start/flutter-tools.nvim",
+    url = "https://github.com/akinsho/flutter-tools.nvim"
+  },
+  ["github-nvim-theme"] = {
+    loaded = true,
+    path = "/Users/zc-hackintosh/.local/share/nvim/site/pack/packer/start/github-nvim-theme",
+    url = "https://github.com/projekt0n/github-nvim-theme"
+  },
   ["impatient.nvim"] = {
     config = { "require('impatient')" },
     loaded = true,
@@ -114,6 +125,7 @@ _G.packer_plugins = {
   },
   ["telescope.nvim"] = {
     commands = { "Telescope" },
+    config = { "require('config.flutter-tools')" },
     loaded = false,
     needs_bufread = true,
     only_cond = false,
@@ -123,14 +135,18 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: impatient.nvim
-time([[Config for impatient.nvim]], true)
-require('impatient')
-time([[Config for impatient.nvim]], false)
 -- Config for: nvim-tree.lua
 time([[Config for nvim-tree.lua]], true)
 require('config.nvim-tree')
 time([[Config for nvim-tree.lua]], false)
+-- Config for: impatient.nvim
+time([[Config for impatient.nvim]], true)
+require('impatient')
+time([[Config for impatient.nvim]], false)
+-- Config for: flutter-tools.nvim
+time([[Config for flutter-tools.nvim]], true)
+require('config.flutter-tools')
+time([[Config for flutter-tools.nvim]], false)
 
 -- Command lazy-loads
 time([[Defining lazy-load commands]], true)
@@ -141,8 +157,8 @@ vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Event lazy-loads
 time([[Defining lazy-load event autocommands]], true)
-vim.cmd [[au VimEnter * ++once lua require("packer.load")({'alpha-nvim'}, { event = "VimEnter *" }, _G.packer_plugins)]]
 vim.cmd [[au BufEnter * ++once lua require("packer.load")({'nvim-treesitter'}, { event = "BufEnter *" }, _G.packer_plugins)]]
+vim.cmd [[au VimEnter * ++once lua require("packer.load")({'alpha-nvim'}, { event = "VimEnter *" }, _G.packer_plugins)]]
 time([[Defining lazy-load event autocommands]], false)
 vim.cmd("augroup END")
 if should_profile then save_profiles() end

@@ -36,7 +36,8 @@ require("packer").startup({
       use {
         'nvim-telescope/telescope.nvim', 
         cmd = 'Telescope',
-        requires = { {'nvim-lua/plenary.nvim'} }
+        requires = { {'nvim-lua/plenary.nvim'} },
+        config = [[require('config.flutter-tools')]] 
       }
 
       use ({ "nvim-treesitter/nvim-treesitter",
@@ -44,6 +45,21 @@ require("packer").startup({
              run = ":TSUpdate" 
             --  config = [[require('config.treesitter')]] 
       })
+
+      -- flutter 
+      use {'akinsho/flutter-tools.nvim', 
+            requires = 'nvim-lua/plenary.nvim',
+            config = [[require('config.flutter-tools')]]
+      }
+
+      use {"projekt0n/github-nvim-theme",
+           config = [[require('themes.github-nvim-theme')]]      
+      }
+
+       use({
+            "catppuccin/nvim",
+            as = "catppuccin"
+       })
   end
 })
 
